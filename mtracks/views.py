@@ -1,21 +1,62 @@
 from django.shortcuts import render
 from django.http import Http404
-from django.http import HttpResponse
+import traceback
 from mtracks.models import Genres, Track
 # Create your views here.
 
 def index(request):
-    trackList = Track.objects.all()
-    context = {'trackList' : trackList}
-    return render(request,'tracks/index.html',context)
+    try:
+        trackList = Track.objects.all()
+        genresList = Genres.objects.all()
+        context = {
+            'index' : {
+                'trackList':trackList,
+                'genresList':genresList
+            }
+        }
+    except:
+        raise Http404("Exception in index function in views of mtracks app ")
+    return render(request,'home/index.html',context)
 
 def tracks(request):
-    return index(request)
-
-
-def track_detail(request, track_id):
     try:
-        track_obj = Track.objects.get(pk=track_id)
+        trackList = Track.objects.all()
+        context = {
+                'trackList':trackList,
+            }
     except:
-        raise Http404("The given Track dosen't Exist")
-    return render(request,'tracks/trackDetail.html',{'track_obj': track_obj})
+        raise Http404("Exception in index function in views of mtracks app ")
+    return render(request,'tracks/index.html',context)
+
+def detail(request,id):
+    try:
+        uri = request.get_raw_uri()
+        g_obj = {}
+        t_obj = {}
+
+        if str(uri).__contains__("genres"):
+            g_obj = Genres.objects.get(pk=id)
+            templateUri = "genres/genreDetail.html"
+        elif str(uri).__contains__("tracks"):
+            t_obj = Track.objects.get(pk=id)
+            templateUri = "tracks/trackDetail.html"
+        context = {"index":{"t_obj":t_obj,"g_obj":g_obj}}
+    except:
+        raise "some problem encountered"
+    try:
+        return render(request,templateUri,context)
+    except:
+        raise "missing variables"
+
+
+def genres(request):
+    try:
+        genresList = Genres.objects.all()
+        context = {
+            'genresList':genresList,
+            }
+    except:
+        raise Http404("Exception in genres function in views of mtracks app ")
+    return render(request,'genres/index.html',context)
+
+

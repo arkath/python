@@ -4,7 +4,7 @@
     <facet type="django" name="Django">
       <configuration>
         <option name="rootFolder" value="$MODULE_DIR$" />
-        <option name="settingsModule" value="settings.py" />
+        <option name="settingsModule" value="musicTracks/settings.py" />
         <option name="manageScript" value="manage.py" />
       </configuration>
     </facet>
@@ -19,7 +19,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/projectTracks" />
+        <option value="$MODULE_DIR$/mtracks/templates/tracks" />
       </list>
     </option>
   </component>
