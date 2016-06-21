@@ -7,12 +7,12 @@
 <body>
 <ul>
     {% for track in index.trackList %}
-        <li><a href="/tracks/{{ track.id }}/">{{ track }}</a></li>
+        <li><a href="/track/{{ track.id }}/">{{ track }}</a></li>
     {% endfor %}
 </ul>
 <ul>
     {% for genre in index.genresList %}
-        <li><a href="/genres/{{ genre.id }}/">{{ genre }}</a></li>
+        <li><a href="/genre/{{ genre.id }}/">{{ genre }}</a></li>
     {% endfor %}
 </ul>
 </body>

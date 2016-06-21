@@ -34,12 +34,12 @@ def detail(request,id):
         g_obj = {}
         t_obj = {}
 
-        if str(uri).__contains__("genres"):
+        if str(uri).__contains__("genre"):
             g_obj = Genres.objects.get(pk=id)
-            templateUri = "genres/genreDetail.html"
-        elif str(uri).__contains__("tracks"):
+            templateUri = "genre/genreDetail.html"
+        elif str(uri).__contains__("track"):
             t_obj = Track.objects.get(pk=id)
-            templateUri = "tracks/trackDetail.html"
+            templateUri = "track/trackDetail.html"
         context = {"index":{"t_obj":t_obj,"g_obj":g_obj}}
     except:
         raise "some problem encountered"

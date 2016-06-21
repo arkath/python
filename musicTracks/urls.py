@@ -18,7 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('mtracks.urls')),
-    url(r'^tracks/', include('mtracks.urls')),
-    url(r'^genres/', include('mtracks.urls')),
+    url(r'^track/', include('mtracks.urls')),
+    url(r'^genre/', include('mtracks.urls')),
     url(r'^admin/', admin.site.urls),
 ]
